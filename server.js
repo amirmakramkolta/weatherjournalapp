@@ -15,6 +15,19 @@ const cors = require('cors');
 app.use(cors());
 //get the website front-end files
 app.use(express.static('website'));
+//end point
+const projectData = []
+//post user response 
+app.post('/add',(req,res)=>{
+  newEntry={
+    temp: req.body.tempCelsius,
+    date: req.body.date,
+    userRes: req.body.userRes
+  }
+  projectData.push(newEntry);
+  res.send(projectData);
+  console.log(projectData)
+})
 
 //set a port
 const port = 5000;
