@@ -36,6 +36,7 @@ const postData = async (url='',data ={})=>{
 
 generate.addEventListener('submit',()=>{
   let zip = document.getElementById('zip').value;
+  if(!zip) window.location.href='./error.html'
   getApiData(apiUrl+zip+key)
   .then((data)=>{
     //to turn unix time to human friendly formula

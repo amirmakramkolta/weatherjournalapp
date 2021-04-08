@@ -31,19 +31,9 @@ body{
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
-#date{
-  width: 30%;
+.show-data{
+  width:30%
 }
-
-#temp{
-  width: 30%;
-}
-
-#content{
-  width: 30%
-}
-
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
   display:block;
