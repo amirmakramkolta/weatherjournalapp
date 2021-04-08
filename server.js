@@ -28,7 +28,9 @@ app.post('/add',(req,res)=>{
   res.send(projectData);
   console.log(projectData)
 })
-
+app.get('/entry',(req,res)=>{
+  res.send(projectData);
+})
 //set a port
 const port = 5000;
 const server = app.listen(port,()=>{console.log(`running on http://localhost:${port}`)});

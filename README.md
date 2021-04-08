@@ -8,8 +8,8 @@ That is a weather application to get the temperature in celsius and locate you u
 
 ## What I use for the project
 
--NodeJS
--ExpressJS
+- NodeJS
+- ExpressJS
 
 ### Notes
 

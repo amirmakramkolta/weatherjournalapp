@@ -30,19 +30,21 @@ body{
 }
 
 #entryHolder{
-
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #date{
-
+  width: 30%;
 }
 
 #temp{
-
+  width: 30%;
 }
 
 #content{
-
+  width: 30%
 }
 
 .headline {

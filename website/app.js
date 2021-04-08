@@ -11,7 +11,6 @@ const getApiData = async (url = '')=>{
   try{
     const data = req.json();
     return data;
-    //console.log(data);
   }catch(err){
     console.log('error',err);
   }
@@ -28,7 +27,7 @@ const postData = async (url='',data ={})=>{
   })
   try{
     const newData = await res.json();
-    console.log(newData);
+    //console.log(newData);
     return newData;
   }catch(error){
     console.log('error',error);
@@ -39,11 +38,10 @@ generate.addEventListener('submit',()=>{
   let zip = document.getElementById('zip').value;
   getApiData(apiUrl+zip+key)
   .then((data)=>{
-    //console.log(data)
     //to turn unix time to human friendly formula
     function turnDate(date){
       let d = new Date(date*1000);
-      return d.toLocaleString("en-US",{timeZoneName: "short"});
+      return d.toLocaleString("en-US",{hour12: true});
     }
     let userRes = document.getElementById('feelings').value;
     const newVal = {
@@ -51,6 +49,28 @@ generate.addEventListener('submit',()=>{
       date : turnDate(data.dt),
       userRes:userRes
     }
-    postData('/add',newVal)
+    postData('/add',newVal);
+    updateUI()
+    .then(data =>{
+      let dateDiv = document.getElementById('date');
+      let tempDiv = document.getElementById('temp');
+      let contentDiv = document.getElementById('content');
+      console.log(data);
+      dateDiv.innerHTML += `<div>${data[data.length-1].date}</div>`;
+      tempDiv.innerHTML += `<div>${data[data.length-1].temp}</div>`;
+      contentDiv.innerHTML += `<div>${data[data.length-1].userRes}</div>`;
+      
+    })
   })
 })
+
+const updateUI = async () =>{
+  const res = await fetch('/entry');
+  try{
+    const allData = res.json();
+    return allData;
+  }
+  catch(error){
+    console.log('error',error);
+  }
+}
